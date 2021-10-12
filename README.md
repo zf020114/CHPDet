@@ -7,19 +7,21 @@
   <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/framework.png" width="100%"></p>
  
 #### 2. *Our DARDet significantly achieve state-of-the-art performance on theFGSD2021, HRSC2016 and  UCAS-AOD datasets with high efficiency.*
-  <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/result_hrsc.png" width="100%"></p>
-  <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/result_aod.png" width="100%"></p>
+  <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/result3.png" width="100%"></p>
+  <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/resulthrsc.png" width="100%"></p>
+  <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/resultaod.png" width="100%"></p>
 
 #### 2. *we proposed a new dataset named FGSD2021 for multi-class arbitrary-oriented ship detection in remote sensing images at fixed GSD.*
   <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/dataset.png" width="75%"></p>
 
-## Benchmark and model zoo
+## Benchmark and model zoo (exact code 'nudt')
 
 |Model          |    Backbone     |    Dataset  |  Rotate | img_size  | Inf time (fps) | box AP (ori./now) | Download|
 |:-------------:| :-------------: | :-----:| :-----: | :-----:  | :------------: | :----: | :---------------------------------------------------------------------------------------: |
-|CHPDet         |    DLA-34_OIM     |   FGSD2021     |  ✓     |   512x512     |      41.7      |  87.91 |    [model](https://drive.google.com/file/d/1W-JPfoBPHdOxY6KqsD0ZhhLjqNBS7UUN/view?usp=sharing)    |
-|CHPDet         |    DLA-34_OIM     |   FGSD2021     |  ✓    |  1024x1024     |      15.4      |  89.29 |    [model](https://drive.google.com/file/d/1Jkbx-WvKhokEOlWR7WLKxTpH4hDTp-Tb/view?usp=sharing)     |
-|CHPDet         |    Hourglass_104  |   HRSC2016     |  ✓    |  1024x1024     |      13.7      |  90.55 |    [model](https://drive.google.com/file/d/1Jkbx-WvKhokEOlWR7WLKxTpH4hDTp-Tb/view?usp=sharing)     |
+|CHPDet         |    DLA-34_OIM     |   FGSD2021     |  ✓     |   512x512     |      41.7      |  87.91 |    [model](https://pan.baidu.com/s/1RmYPbAmNhMfoS5AS9sjq7Q )    |
+|CHPDet         |    Hourglass_104  |   HRSC2016     |  ✓    |  1024x1024     |      13.7      |  90.55 |    [model](https://pan.baidu.com/s/1JHu1BeTHOKLyATpE6nadlg)     |
+
+FGSD2021 Dataset is available at  [<a href="https://pan.baidu.com/s/1vuHCjsZQX8DMHG05mvT0GA">DataSet</a>]
 
 
 ## Installation

@@ -23,13 +23,11 @@
 
 
 ## Installation
-# Installation
-
 
 The code was tested on Ubuntu 16.04, with [Anaconda](https://www.anaconda.com/download) Python 3.7 and [PyTorch]((http://pytorch.org/)) v1.4.0. NVIDIA GPUs are needed for both training and testing.
 After install Anaconda:
 
-0. [Optional but recommended] create a new conda environment. 
+1. [Optional but recommended] create a new conda environment. 
 
     ~~~
     conda create --name CHPDet python=3.7
@@ -40,10 +38,10 @@ After install Anaconda:
     conda activate CHPDet
     ~~~
 
-1. Install pytorch 1.4.0:
+2. Install pytorch 1.4.0:
 
      
-2. Install [COCOAPI](https://github.com/cocodataset/cocoapi):
+3. Install [COCOAPI](https://github.com/cocodataset/cocoapi):
 
     ~~~
     # COCOAPI=/path/to/clone/cocoapi
@@ -53,7 +51,7 @@ After install Anaconda:
     python setup.py install --user
     ~~~
 
-3. Clone this repo:
+4. Clone this repo:
 
     ~~~
     CHPDet_ROOT=/path/to/clone/CHPDet
@@ -61,21 +59,21 @@ After install Anaconda:
     ~~~
 
 
-4. Install the requirements
+5. Install the requirements
 
     ~~~
     pip install -r requirements.txt
     ~~~
     
     
-5. Compile deformable convolutional (from [DCNv2](https://github.com/CharlesShang/DCNv2/tree/pytorch_0.4)).
+6. Compile deformable convolutional (from [DCNv2](https://github.com/CharlesShang/DCNv2/tree/pytorch_0.4)).
 
     ~~~
     cd $CHPDet_ROOT/src/lib/models/networks/DCNv2
     ./make.sh
     ~~~
 
-6. compile orn from s2anet
+7. compile orn from s2anet
      cd $CHPDet_ROOT/src/lib/models/networks/orn
      bash make.sh
 

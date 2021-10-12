@@ -1,0 +1,535 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Nov  4 11:06:37 2019
+
+@author: admin
+"""
+def get_label_name_map(NAME_LABEL_MAP):
+    reverse_dict = {}
+    for name, label in NAME_LABEL_MAP.items():
+        reverse_dict[label] = name
+    return reverse_dict
+
+NAME_LABEL_MAP_ICDAR =  {'1': 1}
+NAME_LABEL_MAP_USnavy =  {
+        '航母': 1,
+        '黄蜂级': 2,
+        '塔瓦拉级': 3,
+        '蓝岭级': 4,
+        '奥斯汀级': 5,
+        '惠特贝岛级': 6,
+        '圣安东尼奥级': 7,
+        '新港级': 8,
+        '提康德罗加级': 9,
+        '阿利·伯克级': 10,
+        '朱姆沃尔特级': 11,
+        '佩里级': 12,
+        '刘易斯和克拉克级': 13,
+        '供应级': 14,
+        '凯泽级': 15,
+        '霍普级': 16,
+        '仁慈级': 17,
+        '先锋级': 18,
+        '自由级': 19,
+        '独立级': 20,
+        '复仇者级': 21,
+        '胜利级': 22,
+        '潜艇':23,
+        '其它':24,
+        '其他':24
+        }
+NAME_LABEL_MAP_bridge =  {
+        'bridge': 1,
+        }
+NAME_LABEL_MAP_plane =  {
+        'plane': 1,
+        }
+
+
+NAME_LABEL_MAP_USnavy_20 =  {
+        '航母': 1,
+        '黄蜂级': 2,
+        '塔瓦拉级': 3,
+        '蓝岭级': 24,
+        '奥斯汀级': 5,
+        '惠特贝岛级': 6,
+        '圣安东尼奥级': 7,
+        '新港级': 8,
+        '提康德罗加级': 9,
+        '阿利·伯克级': 10,
+        '朱姆沃尔特级': 24,
+        '佩里级': 12,
+        '刘易斯和克拉克级': 13,
+        '供应级': 14,
+        '凯泽级': 15,
+        '霍普级': 16,
+        '仁慈级': 17,
+        '先锋级': 24,
+        '自由级': 19,
+        '独立级': 20,
+        '复仇者级': 21,
+        '胜利级': 24,
+        '潜艇':23,
+        '其他':24
+        }
+
+LABEL_NAME_MAP_USnavy_20 = get_label_name_map(NAME_LABEL_MAP_USnavy_20)
+
+NAME_LABEL_MAP_USnavy_en =  {
+        'Aircraft carriers': 1,
+        'Wasp class': 2,
+        'Tarawa class': 3,
+        'Blue Ridge class': 4,
+        'Austin class': 5,
+        'Whidbey Island class': 6,
+        'San Antonio class': 7,
+        'Newport class': 8,
+        'Ticonderoga class ': 9,
+        'Arleigh Burke class': 10,
+        'Zumwalt class': 11,
+        'Perry class': 12,
+        'Lewis and Clark class': 13,
+        'Supply class': 14,
+        'Henry J. Kaiser class': 15,
+        'Bob Hope Class': 16,
+        'Mercy class': 17,
+        'Spearhead class': 18,
+        'Freedom class': 19,
+        'Independence class': 20,
+        'Avenger class': 21,
+        'Victorious-class': 22,
+        'Submarine':23,
+        'Other':24
+        }
+NAME_LONG_MAP_USnavy = {
+        '航母': 330,
+        '黄蜂级': 253,
+        '塔瓦拉级': 253,
+        '蓝岭级': 193,
+        '奥斯汀级': 173,
+        '惠特贝岛级': 185,
+        '圣安东尼奥级': 208,
+        '新港级': 168,
+        '提康德罗加级': 172,
+        '阿利·伯克级': 154,
+        '朱姆沃尔特级': 182,
+        '佩里级': 135,
+        '刘易斯和克拉克级': 210,
+        '供应级': 229,
+        '凯泽级': 206,
+        '霍普级': 290,
+        '仁慈级': 272,
+        '先锋级': 103,
+        '自由级': 120,
+        '独立级': 127,
+        '复仇者级': 68,
+        '胜利级': 71.5,
+        '潜艇':140,
+        '其他':200
+        }
+normal=0.10
+NAME_STD_MAP_USnavy = {
+        '航母': 0.1,
+        '黄蜂级': normal,
+        '塔瓦拉级': normal,
+        '蓝岭级': normal,
+        '奥斯汀级': normal,
+        '惠特贝岛级': normal,
+        '圣安东尼奥级': normal,
+        '新港级': normal,
+        '提康德罗加级': normal,
+        '阿利·伯克级': normal,
+        '朱姆沃尔特级': normal,
+        '佩里级': normal+0.01,
+        '刘易斯和克拉克级': normal,
+        '供应级': normal-0.01,
+        '凯泽级': normal-0.01,
+        '霍普级': normal,
+        '仁慈级': normal,
+        '先锋级': normal*2,
+        '自由级': normal*2,
+        '独立级': normal*2,
+        '复仇者级': normal*2,
+        '胜利级': normal*2,
+        '潜艇':0.75,
+        '其他':1
+        }
+NAME_LABEL_MAP_TZship = {
+        '航母': 1,
+        '黄蜂级': 2,
+        '圣安东尼奥级': 3,
+        '惠特贝岛级': 4,
+        '奥斯汀级': 5,
+        '提康德罗加级': 6,
+        '阿利·伯克级': 7,
+        '佩里级': 8,
+        '刘易斯和克拉克级': 9,
+        '凯泽级': 10,
+        '供应级': 11,
+        '霍普级': 12,
+        '仁慈级': 13
+        }
+
+NAME_LABEL_MAP_HRSC = {
+        '船': 1,
+        '航母': 2,
+        '军舰': 3,
+        '商船': 4,
+        '尼米兹级航母': 5,
+        '企业级航母': 6,
+        '阿利伯克级驱逐舰': 7,
+        '惠德贝岛级船坞登陆舰': 8,
+        '佩里级护卫舰': 9,
+        '圣安东尼奥级两栖船坞运输舰': 10,
+        '提康德罗加级巡洋舰': 11,
+        '小鹰级航母': 12,
+        '俄罗斯库兹涅佐夫号航母': 13,
+        '阿武隈级护卫舰': 14,
+        '奥斯汀级两栖船坞运输舰': 15,
+        '塔拉瓦级通用两栖攻击舰': 16,
+        '蓝岭级指挥舰': 17,
+        '集装箱货船': 18,
+        '尾部OX头部圆指挥舰': 19,
+        '运输汽车船': 20,
+        '舰':21,
+        '气垫船': 22,
+        '航':23,
+        '游艇': 24,
+        '货船(_|.--.--|_]=':25,
+        '游轮':26,
+        '潜艇':27,
+        '琵琶形军舰':28,
+        '医疗船':29,
+        '运输汽车船(======|':30,
+        '福特级航空母舰':31,
+        '中途号航母':32,
+        '无敌级航空母舰':33
+        }
+NAME_LABEL_MAP_HRSC_en = {
+        'ship': 1,
+        'aircraft carrier': 2,
+        'warcraft': 3,
+        'merchant ship': 4,
+        'Nimitz': 5,
+        'Enterprise': 6,
+        'Arleigh Burke': 7,
+        'WhidbeyIsland': 8,
+        'Perry': 9,
+        'Sanantonio': 10,
+        'Ticonderoga': 11,
+        'Kitty Hawk': 12,
+        'Kuznetsov': 13,
+        'Abukuma': 14,
+        'Austen': 15,
+        'Tarawa': 16,
+        'Blue Ridge': 17,
+        'Container ship': 18,
+        'OXo|--)': 19,
+        'Car carrier([]==[])': 20,
+        'jian':21,
+        'Hovercraft': 22,
+        'hang':23,
+        'yacht': 24,
+        'CntShip(_|.--.--|_]=':25,
+        'Cruise':26,
+        'submarine':27,
+        'lute':28,
+        'Medical':29,
+        'Car carrier(======|':30,
+        'Ford-class':31,
+        'Midway-class':32,
+        'Invincible-class':33
+        }
+NAME_LABEL_MAP_DOTA15 ={
+        'plane': 1,
+        'baseball-diamond': 2,
+        'bridge': 3,
+        'ground-track-field': 4,
+        'small-vehicle': 5,
+        'large-vehicle': 6,
+        'ship': 7,
+        'tennis-court': 8,
+        'basketball-court': 9,
+        'storage-tank': 10,
+        'soccer-ball-field': 11,
+        'roundabout': 12,
+        'harbor': 13,
+        'swimming-pool': 14,
+        'helicopter': 15,
+        'container-crane': 16,
+        'airport':17,
+        'helipad':18
+        }
+NAME_LABEL_MAP_DOTA10 ={
+        'plane': 1,
+        'baseball-diamond': 2,
+        'bridge': 3,
+        'ground-track-field': 4,
+        'small-vehicle': 5,
+        'large-vehicle': 6,
+        'ship': 7,
+        'tennis-court': 8,
+        'basketball-court': 9,
+        'storage-tank': 10,
+        'soccer-ball-field': 11,
+        'roundabout': 12,
+        'harbor': 13,
+        'swimming-pool': 14,
+        'helicopter': 15
+        }
+
+angle_number_dict_DOTA15={
+        'plane': 0,
+        'baseball-diamond': 10,
+        'bridge': 2,
+        'ground-track-field': 20,
+        'small-vehicle':0,
+        'large-vehicle': 0,
+        'ship': 0,
+        'tennis-court': 0,
+        'basketball-court': 8,
+        'storage-tank': 0,
+        'soccer-ball-field': 18,
+        'roundabout': 20,
+        'harbor': 0,
+        'swimming-pool': 2,
+        'helicopter': 9,
+        'container-crane': 12}
+#rorate num and 
+#        'plane': 1,
+#        'baseball-diamond': 30,
+#        'bridge': 4,
+#        'ground-track-field': 35,
+#        'small-vehicle':0,
+#        'large-vehicle': 0,
+#        'ship': 0,
+#        'tennis-court': 2,
+#        'basketball-court': 20,
+#        'storage-tank': 0,
+#        'soccer-ball-field': 35,
+#        'roundabout': 60,
+#        'harbor': 1,
+#        'swimming-pool': 4,
+#        'helicopter': 9,
+#        'container-crane': 15}
+#plane 35404.0
+#baseball-diamond 22932.0
+#bridge 18288.0
+#ground-track-field 16214.0
+#small-vehicle 468075.0
+#large-vehicle 59873.0
+#ship 140994.0
+#tennis-court 52116.0
+#basketball-court 33070.0
+#storage-tank 16147.0
+#soccer-ball-field 18656.0
+#roundabout 27237.0
+#harbor 30551.0
+#swimming-pool 17331.0
+#helicopter 7764.0
+#container-crane 11433.0
+#total_num 976085.0
+
+NAME_LABEL_MAP_TZship_num = {
+        'A1': 1,
+        'B3': 2,
+        'B4': 3,
+        'B6': 4,
+        'B7': 5,
+        'C1': 6,
+        'D1': 7,
+        'E1': 8,
+        'F1': 9,
+        'F2': 10,
+        'F3': 11,
+        'F4': 12,
+        'F5': 13
+        }
+NAME_LABEL_MAP_TZplane = {
+        'E-3':       1,
+        'E-8':       2,
+        'RC-135V/W': 3,
+        'RC-135S':   4,
+        'E-2':       5,
+        'EP-3':      6,
+        'P-3C':      7,
+        'A-50':      8,
+        'P-8A':      9,
+        'F-22':      10,
+        'F-31':      11,
+        'F-16':      12,
+        'F-15':      13,
+        'F/A-18':    14,
+        'F/A-18E/F': 15,
+        'L-39': 16,
+        'MiG-29': 17,
+        'MiG-31': 18,
+        'Su-35': 19,
+        'Su-30': 20,
+        'Su-27': 21,
+        'Typhoon': 22,
+        'Su-24': 23,
+        'Su-34': 24,
+        'A-10': 25,
+        'Su-25': 26,
+        'B-52': 27,
+        'B-1B': 28,
+        'B-2': 29,
+        'Tu-95': 30,
+        'Tu-160': 31,
+        'KC-135': 32,
+        'KC-10': 33,
+        'C-130': 34,
+        'C-5': 35,
+        'C-2': 36,
+        'C-17': 37,
+        'Il-76': 38,
+        'V-22': 39,
+        'Tu-22M': 40,
+        'An-12': 41,
+        'An-24': 42,
+        'Yak-130': 43,
+        'KC-46A': 44,
+        'C-40': 45,
+        'C-21': 46,
+        'RQ-4': 47,
+        'F-5E': 48,
+        'AV-8': 49,
+        'helicopter': 50,
+        'other': 51,
+        'U-2':  51
+        }
+NAME_long_MAP_TZplane = {
+        'E-3':       46.6,
+        'E-8':       46.6,
+        'RC-135V/W': 46.6,
+        'RC-135S':   46.6,
+        'E-2':       13.0,
+        'EP-3':      35.6,
+        'P-3C':      35.7,
+        'A-50':      46.6,#
+        'P-8A':      39.5,
+        'F-22':      18.9,
+        'F-31':      15.7,
+        'F-16':      12,#
+        'F-15':      15.1,
+        'F/A-18':    17.1,
+        'F/A-18E/F': 18.3,
+        'L-39': 12.1,#
+        'MiG-29': 17.4,
+        'MiG-31': 22.7,
+        'Su-35': 21.9,
+        'Su-30': 21.9,
+        'Su-27': 21.9,
+        'Typhoon': 16.0,#
+        'Su-24': 23.5,
+        'Su-34': 23.3,
+        'A-10': 16.3,#
+        'Su-25': 15.5,
+        'B-52': 48.5,
+        'B-1B': 44.5,
+        'B-2': 21,
+        'Tu-95': 49.5,
+        'Tu-160': 54.1,
+        'KC-135': 41.5,
+        'KC-10': 55.4,
+        'C-130': 29.8,
+        'C-5': 75.5,
+        'C-2': 13,
+        'C-17': 53,
+        'Il-76': 46.6,
+        'V-22': 17.5,
+        'Tu-22M': 42.5,
+        'An-12': 33.1,
+        'An-24': 23.5,
+        'Yak-130': 11.3,
+        'KC-46A': 50.5,
+        'C-40': 33.6,
+        'C-21': 14.8,
+        'RQ-4': 13.5,
+        'F-5E': 14.4,
+        'AV-8': 14.1,
+        'helicopter': 10,
+        'other': 30
+        }
+NAME_width_MAP_TZplane = {
+        'E-3':       44.4,
+        'E-8':       44.4,
+        'RC-135V/W': 44.4,
+        'RC-135S':   44.4,
+        'E-2':       13.6,
+        'EP-3':      30.3,
+        'P-3C':      30.3,
+        'A-50':      50.5,#
+        'P-8A':      37.6,
+        'F-22':      13.6,
+        'F-31':      10.7,
+        'F-16':      9.4,
+        'F-15':      13.1,
+        'F/A-18':    11.4,
+        'F/A-18E/F': 13.6,
+        'L-39': 9.5,
+        'MiG-29': 11.4,
+        'MiG-31': 13.5,
+        'Su-35': 14.4,
+        'Su-30': 14.7,
+        'Su-27': 14.7,
+        'Typhoon': 11,#
+        'Su-24': 17.6,#10.4
+        'Su-34': 14.7,
+        'A-10': 17.5,#
+        'Su-25': 14.4,
+        'B-52': 56.4,
+        'B-1B': 41.8,
+        'B-2': 52.4,
+        'Tu-95': 51.1,
+        'Tu-160': 55.7,
+        'KC-135': 39.9,
+        'KC-10': 50.4,
+        'C-130': 40.4,
+        'C-5': 67.9,
+        'C-2': 13.6,
+        'C-17': 51.8,
+        'Il-76': 50.5,
+        'V-22': 14,
+        'Tu-22M': 34.3,#23.3
+        'An-12': 38,
+        'An-24': 29.2,
+        'Yak-130': 10.4,
+        'KC-46A': 48.1,
+        'C-40': 34.3,#35.7
+        'C-21': 12.0,
+        'RQ-4': 35.4,
+        'F-5E': 8.1,
+        'AV-8': 9.42,#
+        'helicopter': 8,
+        'other':30
+        }
+NAME_LABEL_MAP_RuPlane = {
+        'other': 1,
+        'helicopter': 2,
+        'Tu-160': 3,
+        'Tu-95': 4,
+        'Tu-22M': 5,
+        'Il-76': 6,
+        'An-12': 7,
+        'An-24': 8,
+        'A-50': 9,
+        'Su-27': 10,
+        'Su-35': 11,
+        'Su-30': 12,
+        'Su-34': 13,
+        'MiG-29': 14,
+        'MiG-31': 15,
+        'Su-24': 16,
+        'Su-25': 17,
+        'Yak-130': 18,
+        'L-39': 19
+        }
+USA_class=['E-3','E-8','RC-135V/W','RC-135S','E-2','EP-3','P-3C','P-8A',
+        'F-22','F-35','F-16','F-15','F/A-18','F/A-18E/F','Typhoon','A-10',
+        'B-52','B-1B','B-2','KC-135','KC-10','C-130','C-5','C-2','V-22',
+        'E-4','KC-46A','C-40','C-21', 'U-2','RQ-4','F-5E','AV-8']
+Russia_class=['A-50','P-8A','MiG-29','MiG-31','Su-35','Su-30','Su-27',
+        'Su-24','Su-34','Su-25','Tu-95','Tu-160', 'Il-76','Tu-22M',
+        'An-12','An-24','Yak-130']

@@ -1,0 +1,51 @@
+本代码基于Centernet代码
+
+使用说明：
+基本使用方法参照 CHPDet/readme/GETTING_STARTED.md
+本代码使用说明
+1、将自己的数据集超链接到data/coco
+2、下载训练好的模型放入exp文件夹
+3、测试推理
+   python test.py multi_pose --exp_id dla_USnavy512_RGuass1_12raduis_arf --dataset coco_hp --resume  --debug 2
+
+4、模型训练和推理
+4.1.1 centernet-Rbb 训练:
+python main.py ctdet --exp_id CenR_usnavy512_dla_2x --arch dla_34 --batch_size 26 --master_batch 14--lr 5e-4 --gpus 0,1 --num_workers 8 --num_epochs 230 --lr_step 180,210  --load_model ../exp/multi_pose_dla_3x.pth
+4.1.2 centernet-Rbb 测试:
+python test.py ctdet --exp_id CenR_usnavy512_dla_2x --arch dla_34 --keep_res --resume 
+4.2.1 CHP_DLA 训练:
+
+python main.py multi_pose --exp_id dla_USnavy512_RGuass1_12raduis_arf --arch dlaarf_34  --dataset coco_hp --batch_size 28  --master_batch 16   --gpus 0,1 --lr 5e-4 --load_model ../exp/ctdet_coco_hg.pth  --num_workers 8 --num_epochs 320 --lr_step 270,300
+4.2.2 CHP_DLA 测试:
+python test.py multi_pose --exp_id dla_USnavy512_RGuass1_12raduis_arf --arch dlaarf_34  --dataset coco_hp --resume  
+
+
+5、模型测评
+  在运行test.py 测试数据集后会产生结果文件CHPDet/exp/multi_pose/dla_USnavy512_RGuass1_12raduis_arf/results.json
+  这里会调用DOTA_devkit测评程序
+  使用/CHPDet/src/Test得到json结果拼接转换程序.py 进行测评
+  其中需要用到的GT文件放在CHPDet/src/GT20_TxT
+	使用/CHPDet/src/Test/Rotatexml转换为DotaTxT用于评价.py 将xml文件转换为标准的DOTA格式.将生成的txt文件放入CHPDet/src/GT20_TxT
+5、如果需要训练自己的数据集
+5.1、更改设置 
+   进入CHPDet/src/lib/datasets/dataset/coco_hp.py
+   更改num_classes =16
+       default_resolution =  [1024, 1024]
+    为自己的数据类别和训练分辨率
+   更改opt.py 第345行 
+   'multi_pose': {'default_resolution': [1024, 1024], 'num_classes': 1,}
+5.2 标注数据，使用labelimg2软件标注和可视化数据集
+5.3 数据扩充和重命名。根据需要对数据进行扩充后使用/CHPDet/src/2重命名扩充后的图片和xml文件名.py
+   将文件进行重命名
+5.4 生成标注文件。使用/CHPDet/src/3旋转矩形标注生成keypointjson文件.py
+    生成coco格式的数据集
+5.5 使用CHPDet/src/4可视化json生成单张json.py
+    检查生成的数据格式是否正确
+5.6 将数据集移动到/CHPDet/data/文件夹下并将文件夹名改为coco或者将目录超链接到/CHPDet/data/coco
+  ln -s 源文件夹 /CHPDet/data/coco
+相关细节说明：
+1、是否可视化可以通过在opt.py设置 --debug 0 或者在命令行输入即可
+2、目前我的实验是对DLA34网络增加了ORN模块，如果不需要时用ORN模块，
+则在将 CHPDet/src/lib/models/networks/pose_dla_dcn.py备份
+如后将CHPDet/src/lib/models/networks/pose_dla_dcn_without_ORN.py 重命名为pose_dla_dcn.py
+

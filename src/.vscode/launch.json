@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+             "args": ["multi_pose","--exp_id","hg_3x_DOTA800512","--dataset","coco_hp",
+                "--batch_size","14","--master_batch","7",
+                "--arch", "hourglass",
+                "--lr","2.5e-4","--gpus","0,1",
+                "--load_model","/home/cx/Centernet_tz/models/hg_uanavy_model_last.pth"]
+            // "args": ["multi_pose","--exp_id","dla_3x_DOTA800","--dataset","coco_hp",
+            //     "--batch_size","14","--master_batch","7",
+            //     "--arch", "dla_34",
+            //     "--lr","2.5e-4","--gpus","0,1",
+            //     "--resume"]
+            // "args": ["multi_pose","--exp_id","hg_1x_DOTA800","--dataset","coco_hp",
+            //     "--batch_size","5","--master_batch","5",
+            //     "--arch", "hourglass",
+            //     "--lr","2.5e-4","--gpus","0",
+        //     //     "--load_model","/home/cx/Centernet/models/hg_uanavy_model_last.pth"]
+        // "args": ["multi_pose","--exp_id","res50_dcn_3x_usnavy512","--dataset","coco_hp",
+        //     "--batch_size","24","--master_batch","12",
+        //     "--arch", "resdcn_50",
+        //     "--lr","5e-4","--gpus","0,1",
+        //     "--load_model","/home/cx/Centernet/exp/multi_pose/res50_dcn_3x_usnavy512/model_last.pth"]
+            // "args": ["multi_pose","--exp_id","dla_1x_usnavy512","--dataset","coco_hp",
+            //     "--batch_size","32","--master_batch","16",
+            //     "--arch", "dla_34",
+            //     "--lr","5e-4","--gpus","0,1",
+            //     "--load_model","/home/cx/Centernet/models/ctdet_coco_dla_2x.pth"]#"--debug","2"
+                // "args": ["multi_pose","--exp_id","dla_1x_usnavy512_arf","--dataset","coco_hp",
+                //     "--load_model","/home/cx/Centernet/exp/multi_pose/dla_1x_usnavy512/model_last.pth",
+                //     "--batch_size","24","--master_batch","12","--gpus","0,1"]
+        }
+    ]
+}

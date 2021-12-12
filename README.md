@@ -1,4 +1,4 @@
-# DARDet
+# CHPDet
 **PyTorch implementation of "*Arbitrary-Oriented Ship Detection through Center-Head Point Extraction*",  [<a href="https://raw.github.com/zf020114/DARDet/master/Figs/GRSL.pdf">pdf</a>].**<br><br>
 
 
@@ -6,12 +6,12 @@
 #### 1. *we propose a center-head point extraction based detector (named CHPDet) to achieve arbitrary-oriented ship detection in remote sensing images.*
   <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/framework.png" width="100%"></p>
  
-#### 2. *Our DARDet significantly achieve state-of-the-art performance on theFGSD2021, HRSC2016 and  UCAS-AOD datasets with high efficiency.*
+#### 2. *Our CHPDet achieves state-of-the-art performance on the FGSD2021, HRSC2016 and  UCAS-AOD datasets with high efficiency.*
   <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/result3.png" width="100%"></p>
   <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/resulthrsc.png" width="100%"></p>
   <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/resultaod.png" width="100%"></p>
 
-#### 2. *we proposed a new dataset named FGSD2021 for multi-class arbitrary-oriented ship detection in remote sensing images at fixed GSD.*
+#### 2. *we proposed a new dataset named FGSD2021 for multi-class arbitrary-oriented ship detection in remote sensing images at a fixed GSD.*
   <p align="center"> <img src="https://raw.github.com/zf020114/CHPDet/master/Figs/dataset.png" width="75%"></p>
 
 ## Benchmark and model zoo (exact code 'nudt')
@@ -21,13 +21,13 @@
 |CHPDet         |    DLA-34_OIM     |   FGSD2021     |  ✓     |   512x512     |      41.7      |  87.91 |    [model](https://pan.baidu.com/s/1RmYPbAmNhMfoS5AS9sjq7Q )    |
 |CHPDet         |    Hourglass_104  |   HRSC2016     |  ✓    |  1024x1024     |      13.7      |  90.55 |    [model](https://pan.baidu.com/s/1JHu1BeTHOKLyATpE6nadlg)     |
 
-FGSD2021 Dataset is available at  [<a href="https://pan.baidu.com/s/1vuHCjsZQX8DMHG05mvT0GA">DataSet</a>]
+The FGSD2021 dataset is available at  [<a href="https://pan.baidu.com/s/1vuHCjsZQX8DMHG05mvT0GA">DataSet</a>]
 
 
 ## Installation
 
 The code was tested on Ubuntu 16.04, with [Anaconda](https://www.anaconda.com/download) Python 3.7 and [PyTorch]((http://pytorch.org/)) v1.4.0. NVIDIA GPUs are needed for both training and testing.
-After install Anaconda:
+After installing Anaconda:
 
 1. [Optional but recommended] create a new conda environment. 
 
@@ -40,7 +40,7 @@ After install Anaconda:
     conda activate CHPDet
     ~~~
 
-2. Install pytorch 1.4.0:
+2. Install PyTorch 1.4.0:
 
      
 3. Install [COCOAPI](https://github.com/cocodataset/cocoapi):
@@ -68,7 +68,7 @@ After install Anaconda:
     ~~~
     
     
-6. Compile deformable convolutional (from [DCNv2](https://github.com/CharlesShang/DCNv2/tree/pytorch_0.4)).
+6. Compile deformable convolutions (from [DCNv2](https://github.com/CharlesShang/DCNv2/tree/pytorch_0.4)).
 
     ~~~
     cd $CHPDet_ROOT/src/lib/models/networks/DCNv2
@@ -104,7 +104,7 @@ After install Anaconda:
 ## Prepare dataset.
     Transform dataset to COCO format
 
-    1. prepar data as FGSD2021 use the tool labimg2 (https://github.com/chinakook/labelImg2),
+    1. prepare data as FGSD2021 using the tool labimg2 (https://github.com/chinakook/labelImg2),
     Here, we give an example for image and annotation in ./Figs/
 
     2. crop data to fixed size using ./src/0data_crop.py.
@@ -116,7 +116,7 @@ After install Anaconda:
     5. It is recommended to symlink the dataset root to `data/coco`.
 
 
-* Inference DARDet on DOTA.
+* Inference CHPDet on DOTA.
    1. download model to /exp/multi_pose/dla_USnavy512_RGuass1_12raduis_arf
    2. python test.py multi_pose --exp_id dla_USnavy512_RGuass1_12raduis_arf --dataset coco_hp --resume  --debug 2
 
@@ -148,11 +148,12 @@ python test.py multi_pose --exp_id dla_USnavy512_RGuass1_12raduis_arf --arch dla
 
 If you find this project useful for your research, please use the following BibTeX entry.
 
-@article{zhang2021arbitrary,
+@article{CHPDet,
   title={Arbitrary-Oriented Ship Detection through Center-Head Point Extraction},
   author={Zhang, Feng and Wang, Xueying and Zhou, Shilin and Wang, Yingqian and Hou, Yi},
-  journal={arXiv preprint arXiv:2101.11189},
-  year={2021}
+  journal={IEEE Transactions  on Geoscience and Remote Sensing},
+  year={2021},
+  publisher={IEEE}
 }
 
 ## Contact

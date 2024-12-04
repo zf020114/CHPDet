@@ -18,8 +18,8 @@
 
 |Model          |    Backbone     |    Dataset  |  Rotate | img_size  | Inf time (fps) | box AP (ori./now) | Download|
 |:-------------:| :-------------: | :-----:| :-----: | :-----:  | :------------: | :----: | :---------------------------------------------------------------------------------------: |
-|CHPDet         |    DLA-34_OIM     |   FGSD2021     |  ✓     |   512x512     |      41.7      |  87.91 |    [model](https://pan.baidu.com/s/1RmYPbAmNhMfoS5AS9sjq7Q )    |
-|CHPDet         |    Hourglass_104  |   HRSC2016     |  ✓    |  1024x1024     |      13.7      |  90.55 |    [model](https://pan.baidu.com/s/1JHu1BeTHOKLyATpE6nadlg)     |
+|CHPDet         |    DLA-34_OIM     |   FGSD2021     |  ✓     |   512x512     |      41.7      |  87.91 |    [model(exact code 'nudt')](https://pan.baidu.com/s/1RmYPbAmNhMfoS5AS9sjq7Q )    |
+|CHPDet         |    Hourglass_104  |   HRSC2016     |  ✓    |  1024x1024     |      13.7      |  90.55 |    [model(exact code 'nudt')](https://pan.baidu.com/s/1JHu1BeTHOKLyATpE6nadlg)     |
 
 The FGSD2021 dataset is available at  [<a href="https://pan.baidu.com/s/1q1YQsFAR6nvWIVoa6eo85w?pwd=nudt提取码：nudt">FGSD2021</a>] (exact code 'nudt')
 
